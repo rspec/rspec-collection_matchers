@@ -11,3 +11,5 @@ gemspec
     gem lib, :git => "git://github.com/rspec/#{lib}.git"
   end
 end
+
+eval File.read('Gemfile-custom') if File.exist?('Gemfile-custom')

@@ -5,11 +5,11 @@ require 'rspec/collection_matchers/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "rspec-collection_matchers"
-  spec.version       = Rspec::CollectionMatchers::VERSION
+  spec.version       = RSpec::CollectionMatchers::VERSION
   spec.authors       = ["Hugo Baraúna"]
   spec.email         = ["hugo.barauna@plataformatec.com.br"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.summary       = "rspec-collection_matchers-#{RSpec::CollectionMatchers::VERSION}"
+  spec.description   = "rspec have(n).items matchers"
   spec.homepage      = ""
   spec.license       = "MIT"
 
@@ -20,7 +20,9 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency     "rspec-expectations", ">= 2.14.0"
 
-  spec.add_development_dependency "bundler", "~> 1.3"
-  spec.add_development_dependency "rake"
-  spec.add_development_dependency "rspec-core"
+  spec.add_development_dependency "bundler",    "~> 1.3"
+  spec.add_development_dependency "rake",       "~> 10.0.0"
+  spec.add_development_dependency "rspec-core", ">= 2.14.0"
+  spec.add_development_dependency "cucumber",   "~> 1.1.9"
+  spec.add_development_dependency "aruba",      "~> 0.5"
 end
