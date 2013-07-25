@@ -21,8 +21,4 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency     "rspec-expectations", ">= 2.99.0.pre"
 
   spec.add_development_dependency "bundler",    "~> 1.3"
-  spec.add_development_dependency "rake",       "~> 10.0.0"
-  spec.add_development_dependency "rspec-core", ">= 2.99.0"
-  spec.add_development_dependency "cucumber",   "~> 1.1.9"
-  spec.add_development_dependency "aruba",      "~> 0.5"
 end

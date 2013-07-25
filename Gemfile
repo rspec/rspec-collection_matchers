@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in rspec-collection_matchers.gemspec
 gemspec
 
 %w[rspec rspec-core rspec-expectations rspec-mocks].each do |lib|
@@ -11,5 +10,9 @@ gemspec
     gem lib, :git => "git://github.com/rspec/#{lib}.git", :branch => "2-99-maintenance"
   end
 end
+
+gem "cucumber", "~> 1.1.9"
+gem "aruba",    "~> 0.5"
+gem "rake",     "~> 10.0.0"
 
 eval File.read('Gemfile-custom') if File.exist?('Gemfile-custom')
