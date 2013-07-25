@@ -9,13 +9,13 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Hugo Baraúna"]
   spec.email         = ["hugo.barauna@plataformatec.com.br"]
   spec.summary       = "rspec-collection_matchers-#{RSpec::CollectionMatchers::VERSION}"
-  spec.description   = "rspec have(n).items matchers"
-  spec.homepage      = ""
+  spec.description   = "Collection cardinality matchers, extracted from rspec-expectations"
+  spec.homepage      = "https://github.com/rspec/rspec-collection_matchers"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
-  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
+  spec.test_files    = spec.files.grep(%r{^(spec|features)/})
   spec.require_paths = ["lib"]
 
   spec.add_runtime_dependency     "rspec-expectations", ">= 2.99.0.pre"
