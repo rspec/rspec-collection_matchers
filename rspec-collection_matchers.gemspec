@@ -5,22 +5,20 @@ require 'rspec/collection_matchers/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "rspec-collection_matchers"
-  spec.version       = Rspec::CollectionMatchers::VERSION
+  spec.version       = RSpec::CollectionMatchers::VERSION
   spec.authors       = ["Hugo Baraúna"]
   spec.email         = ["hugo.barauna@plataformatec.com.br"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.summary       = "rspec-collection_matchers-#{RSpec::CollectionMatchers::VERSION}"
+  spec.description   = "Collection cardinality matchers, extracted from rspec-expectations"
+  spec.homepage      = "https://github.com/rspec/rspec-collection_matchers"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
-  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
+  spec.test_files    = spec.files.grep(%r{^(spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency     "rspec-expectations", ">= 2.14.0"
+  spec.add_runtime_dependency     "rspec-expectations", ">= 2.99.0.pre"
 
-  spec.add_development_dependency "bundler", "~> 1.3"
-  spec.add_development_dependency "rake"
-  spec.add_development_dependency "rspec-core"
+  spec.add_development_dependency "bundler",    "~> 1.3"
 end
