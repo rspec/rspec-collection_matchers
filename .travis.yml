@@ -1,5 +1,5 @@
 language: ruby
-bundler_args: "--standalone --binstubs"
+script: "script/test_all"
 rvm:
   - 1.8.7
   - 1.9.2
