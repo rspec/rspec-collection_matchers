@@ -18,6 +18,7 @@ gem "rspec-support", :git => "git://github.com/rspec/rspec-support.git"
 gem "cucumber", "~> 1.1.9"
 gem "aruba",    "~> 0.5"
 gem "rake",     "~> 10.0.0"
+gem "activesupport", ">= 3.0"
 
 platform :rbx do
   gem 'rubysl'
