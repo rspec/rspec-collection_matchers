@@ -19,6 +19,14 @@ Or install it yourself as:
 
     $ gem install rspec-collection_matchers
 
+## Configuration
+
+Just add the following line to your `spec_helper.rb`:
+
+```ruby
+require 'rspec/collection_matchers'
+```
+
 ## Basic usage
 
 Using `rspec-collection_matchers` you can match the number of items in a
