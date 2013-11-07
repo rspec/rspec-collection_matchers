@@ -21,6 +21,12 @@ Or install it yourself as:
 
 ## Basic usage
 
+First of all, you need to require rspec-collection matchers. Add the following line to your `spec_helper.rb`:
+
+```ruby
+require 'rspec/collection_matchers'
+```
+
 Using `rspec-collection_matchers` you can match the number of items in a
 collection directly, e.g.:
 
