@@ -19,7 +19,6 @@ Or install it yourself as:
 
     $ gem install rspec-collection_matchers
 
-
 ## Basic usage
 
 First of all, you need to require rspec-collection matchers. Add the following line to your `spec_helper.rb`:
