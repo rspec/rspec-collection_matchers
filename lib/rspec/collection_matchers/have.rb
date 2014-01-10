@@ -64,11 +64,12 @@ module RSpec
         "expected #{@collection_name} to be a collection but it does not respond to #length, #size or #count"
       end
 
-      def failure_message_for_should
+      def failure_message
         "expected #{relative_expectation} #{@collection_name}, got #{@actual}"
       end
+      alias failure_message_for_should failure_message
 
-      def failure_message_for_should_not
+      def failure_message_when_negated
         if @relativity == :exactly
           return "expected target not to have #{@expected} #{@collection_name}, got #{@actual}"
         elsif @relativity == :at_most
@@ -89,6 +90,7 @@ We recommend that you use this instead:
 EOF
         end
       end
+      alias failure_message_for_should_not failure_message_when_negated
 
       def description
         "have #{relative_expectation} #{@collection_name}"
