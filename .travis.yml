@@ -11,3 +11,6 @@ rvm:
   - jruby-19mode
   - jruby-18mode
   - rbx
+env:
+  - BRANCH=master
+  - BRANCH=2-99-maintenance
