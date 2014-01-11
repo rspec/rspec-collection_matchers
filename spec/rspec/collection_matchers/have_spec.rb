@@ -333,7 +333,7 @@ EOF
 
     it "passes block to target" do
       target = double("target")
-      block = lambda { 5 }
+      block = Proc.new { 5 }
       target.should_receive(:items).with("arg1","arg2", block).and_return([1,2,3])
       expect(target).to have(3).items("arg1","arg2", block)
     end
