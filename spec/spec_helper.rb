@@ -10,7 +10,6 @@ RSpec.configure do |config|
   config.order = 'random'
 end
 
-
 shared_context "with #should enabled", :uses_should do
   orig_syntax = nil
 
@@ -49,4 +48,3 @@ shared_context "with #expect exclusively enabled", :uses_only_expect do
     RSpec::Matchers.configuration.syntax = orig_syntax
   end
 end
-
