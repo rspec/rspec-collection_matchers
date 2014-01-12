@@ -64,31 +64,33 @@ module RSpec
         "expected #{@collection_name} to be a collection but it does not respond to #length, #size or #count"
       end
 
-      def failure_message_for_should
+      def failure_message
         "expected #{relative_expectation} #{@collection_name}, got #{@actual}"
       end
+      alias failure_message_for_should failure_message
 
-      def failure_message_for_should_not
+      def failure_message_when_negated
         if @relativity == :exactly
           return "expected target not to have #{@expected} #{@collection_name}, got #{@actual}"
         elsif @relativity == :at_most
           return <<-EOF
 Isn't life confusing enough?
 Instead of having to figure out the meaning of this:
-  #{Expectations::Syntax.negative_expression("actual", "have_at_most(#{@expected}).#{@collection_name}")}
+  #{Syntax.negative_expression("actual", "have_at_most(#{@expected}).#{@collection_name}")}
 We recommend that you use this instead:
-  #{Expectations::Syntax.positive_expression("actual", "have_at_least(#{@expected + 1}).#{@collection_name}")}
+  #{Syntax.positive_expression("actual", "have_at_least(#{@expected + 1}).#{@collection_name}")}
 EOF
         elsif @relativity == :at_least
           return <<-EOF
 Isn't life confusing enough?
 Instead of having to figure out the meaning of this:
-  #{Expectations::Syntax.negative_expression("actual", "have_at_least(#{@expected}).#{@collection_name}")}
+  #{Syntax.negative_expression("actual", "have_at_least(#{@expected}).#{@collection_name}")}
 We recommend that you use this instead:
-  #{Expectations::Syntax.positive_expression("actual", "have_at_most(#{@expected - 1}).#{@collection_name}")}
+  #{Syntax.positive_expression("actual", "have_at_most(#{@expected - 1}).#{@collection_name}")}
 EOF
         end
       end
+      alias failure_message_for_should_not failure_message_when_negated
 
       def description
         "have #{relative_expectation} #{@collection_name}"
@@ -116,6 +118,54 @@ EOF
 
       def enumerator_class
         RUBY_VERSION < '1.9' ? Enumerable::Enumerator : Enumerator
+      end
+    end
+
+    module Syntax
+      # @api private
+      # Generates a positive expectation expression.
+      def self.positive_expression(target_expression, matcher_expression)
+        expression_generator.positive_expression(target_expression, matcher_expression)
+      end
+
+      # @api private
+      # Generates a negative expectation expression.
+      def self.negative_expression(target_expression, matcher_expression)
+        expression_generator.negative_expression(target_expression, matcher_expression)
+      end
+
+      # @api private
+      # Selects which expression generator to use based on the configured syntax.
+      def self.expression_generator
+        if RSpec::Expectations::Syntax.expect_enabled?
+          ExpectExpressionGenerator
+        else
+          ShouldExpressionGenerator
+        end
+      end
+
+      # @api private
+      # Generates expectation expressions for the `should` syntax.
+      module ShouldExpressionGenerator
+        def self.positive_expression(target_expression, matcher_expression)
+          "#{target_expression}.should #{matcher_expression}"
+        end
+
+        def self.negative_expression(target_expression, matcher_expression)
+          "#{target_expression}.should_not #{matcher_expression}"
+        end
+      end
+
+      # @api private
+      # Generates expectation expressions for the `expect` syntax.
+      module ExpectExpressionGenerator
+        def self.positive_expression(target_expression, matcher_expression)
+          "expect(#{target_expression}).to #{matcher_expression}"
+        end
+
+        def self.negative_expression(target_expression, matcher_expression)
+          "expect(#{target_expression}).not_to #{matcher_expression}"
+        end
       end
     end
   end
