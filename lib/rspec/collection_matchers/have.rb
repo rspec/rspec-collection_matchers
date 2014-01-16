@@ -2,6 +2,7 @@ module RSpec
   module CollectionMatchers
     class Have
       QUERY_METHODS = [:size, :length, :count].freeze
+      IGNORED_CLASSES = [Integer].freeze
 
       def initialize(expected, relativity=:exactly)
         @expected = case expected
@@ -33,7 +34,7 @@ module RSpec
           raise not_a_collection if @actual.nil?
         else
           query_method = determine_query_method(collection)
-          raise not_a_collection unless query_method
+          raise not_a_collection if !query_method || is_ignored_class?(collection)
           @actual = collection.__send__(query_method)
         end
         case @relativity
@@ -58,6 +59,10 @@ module RSpec
 
       def determine_query_method(collection)
         QUERY_METHODS.detect {|m| collection.respond_to?(m)}
+      end
+
+      def is_ignored_class?(collection)
+        IGNORED_CLASSES.any? {|klass| klass === collection}
       end
 
       def not_a_collection
