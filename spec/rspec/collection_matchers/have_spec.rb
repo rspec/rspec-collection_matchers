@@ -108,6 +108,17 @@ describe "have matcher" do
     it "provides a meaningful error" do
       owner = Class.new do
         def items
+          1
+        end
+      end.new
+      expect do
+        expect(owner).to have(3).items
+      end.to raise_error("expected items to be a collection but it does not respond to #length, #size or #count")
+    end
+
+    it "provides a meaningful error" do
+      owner = Class.new do
+        def items
           Object.new
         end
       end.new
