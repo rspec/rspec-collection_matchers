@@ -28,6 +28,13 @@ module RSpec
         included do
           alias_method_chain :failure_message, :errors_on_extensions
           alias_method_chain :description, :errors_on_extensions
+
+          ## For RSpec 2.99 compatibility
+          if instance_methods.include? :failure_message_for_should
+            alias failure_message_for_should_with_errors_on_extensions failure_message_with_errors_on_extensions
+            alias_method_chain :failure_message_for_should, :errors_on_extensions
+            alias failure_message_without_errors_on_extensions failure_message_for_should_without_errors_on_extensions
+          end
         end
 
         # @api private
