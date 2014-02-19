@@ -35,6 +35,7 @@ module RSpec::CollectionMatchers::Rails
       end
 
       it "has a standard rspec description" do
+        RSpec::CollectionMatchers::Have
         have(2).elements.description.should == "have 2 elements"
       end
     end
