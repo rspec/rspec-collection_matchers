@@ -1,5 +1,3 @@
-require 'rspec/collection_matchers/have'
-
 require 'active_support/concern'
 require 'active_support/core_ext/module/aliasing'
 
