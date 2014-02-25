@@ -1,4 +1,5 @@
 ### In Development
+[full changelog](http://github.com/rspec/rspec-core/compare/v0.0.3...master)
 
 Enhancements:
 
