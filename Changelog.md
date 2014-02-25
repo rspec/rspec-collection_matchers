@@ -1,3 +1,9 @@
+### In Development
+
+Enhancements:
+
+* Add Rails extension `have(n).errors_on(:whatever)` (Bradley Schaefer)
+
 ### 0.0.3 / 2014-02-16
 
 [full changelog](http://github.com/rspec/rspec-collection_matchers/compare/v0.0.2...v0.0.3)
