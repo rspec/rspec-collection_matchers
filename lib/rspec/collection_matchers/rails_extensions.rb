@@ -24,4 +24,3 @@ if defined?(::ActiveModel)
     alias :error_on :errors_on
   end
 end
-
