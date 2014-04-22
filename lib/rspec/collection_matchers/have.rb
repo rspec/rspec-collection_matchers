@@ -70,6 +70,7 @@ module RSpec
       end
 
       def failure_message
+        return errors_on_message(:expected, ", got #{@actual}") if is_errors_on?
         "expected #{relative_expectation} #{@collection_name}, got #{@actual}"
       end
       alias failure_message_for_should failure_message
@@ -98,6 +99,7 @@ EOF
       alias failure_message_for_should_not failure_message_when_negated
 
       def description
+        return errors_on_message(:have) if is_errors_on?
         "have #{relative_expectation} #{@collection_name}"
       end
 
@@ -123,6 +125,14 @@ EOF
 
       def enumerator_class
         RUBY_VERSION < '1.9' ? Enumerable::Enumerator : Enumerator
+      end
+
+      def is_errors_on?
+        [:errors_on, :error_on].include? @collection_name
+      end
+
+      def errors_on_message(prefix, suffix = nil)
+        "#{prefix} #{relative_expectation} #{@collection_name.to_s.gsub('_', ' ')} :#{@args[0]}#{suffix}"
       end
     end
 
