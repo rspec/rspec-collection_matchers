@@ -8,6 +8,14 @@ RSpec.configure do |config|
   config.filter_run :focus
 
   config.order = 'random'
+
+  config.expect_with :rspec do |rspec|
+    rspec.syntax = :expect
+  end
+
+  config.mock_with :rspec do |rspec|
+    rspec.syntax = :expect
+  end
 end
 
 shared_context "with #should enabled", :uses_should do

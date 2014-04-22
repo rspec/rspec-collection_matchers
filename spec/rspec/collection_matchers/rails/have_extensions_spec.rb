@@ -10,7 +10,7 @@ module RSpec::CollectionMatchers::Rails
 
       it "provides a failure message including the number actually given" do
         expect {
-          [].should have(1).error_on(:whatever)
+          expect([]).to have(1).error_on(:whatever)
         }.to raise_error("expected 1 error on :whatever, got 0")
       end
     end
@@ -22,7 +22,7 @@ module RSpec::CollectionMatchers::Rails
 
       it "provides a failure message including the number actually given" do
         expect {
-          [1].should have(3).errors_on(:whatever)
+          expect([1]).to have(3).errors_on(:whatever)
         }.to raise_error("expected 3 errors on :whatever, got 1")
       end
     end
@@ -30,7 +30,7 @@ module RSpec::CollectionMatchers::Rails
     describe "have something other than error_on or errors_on" do
       it "has a standard rspec failure message" do
         expect {
-          [1,2,3].should have(2).elements
+          expect([1,2,3]).to have(2).elements
         }.to raise_error("expected 2 elements, got 3")
       end
 
