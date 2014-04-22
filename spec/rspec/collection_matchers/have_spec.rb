@@ -338,14 +338,14 @@ EOF
   describe "have(n).items(args, block)" do
     it "passes args to target" do
       target = double("target")
-      target.should_receive(:items).with("arg1","arg2").and_return([1,2,3])
+      expect(target).to receive(:items).with("arg1","arg2").and_return([1,2,3])
       expect(target).to have(3).items("arg1","arg2")
     end
 
     it "passes block to target" do
       target = double("target")
       block = Proc.new { 5 }
-      target.should_receive(:items).with("arg1","arg2", block).and_return([1,2,3])
+      expect(target).to receive(:items).with("arg1","arg2", block).and_return([1,2,3])
       expect(target).to have(3).items("arg1","arg2", block)
     end
   end
