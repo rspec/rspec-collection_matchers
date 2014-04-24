@@ -1,5 +1,6 @@
-### In Development
-[full changelog](http://github.com/rspec/rspec-collection_matchers/compare/v0.0.3...master)
+### 0.0.4 / 2014-04-24
+
+[full changelog](http://github.com/rspec/rspec-collection_matchers/compare/v0.0.3...v0.0.4)
 
 Enhancements:
 
