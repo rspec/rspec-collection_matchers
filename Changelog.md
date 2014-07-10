@@ -1,3 +1,7 @@
+### 1.0.0 / 2014-06-09
+
+[full changelog](http://github.com/rspec/rspec-collection_matchers/compare/v0.0.4...v1.0.0)
+
 ### 0.0.4 / 2014-04-24
 
 [full changelog](http://github.com/rspec/rspec-collection_matchers/compare/v0.0.3...v0.0.4)
