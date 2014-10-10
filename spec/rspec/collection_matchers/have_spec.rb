@@ -387,18 +387,18 @@ EOF
   describe "expectations compounded with RSpec::Matchers::Composable#and" do
     it "fails with first error" do
       expect {
-        expect([1, 2, 3]).to have(4).items.and have(3).items
+        expect([1, 2, 3]).to be_falsey.and have(3).items
       }.to raise_error
     end
 
     it "fails with second error" do
       expect {
-        expect([1, 2, 3]).to have(3).items.and have(4).items
+        expect([1, 2, 3]).to have(3).items.and be_falsey
       }.to raise_error
     end
 
     it "passes" do
-      expect([1, 2, 3]).to have(3).items.and have(3).items
+      expect([1, 2, 3]).to have(3).items.and be_truthy
     end
   end
 
