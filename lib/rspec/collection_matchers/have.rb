@@ -1,6 +1,8 @@
 module RSpec
   module CollectionMatchers
     class Have
+      include RSpec::Matchers::Composable
+      
       QUERY_METHODS = [:size, :length, :count].freeze
       IGNORED_CLASSES = [Integer].freeze
 

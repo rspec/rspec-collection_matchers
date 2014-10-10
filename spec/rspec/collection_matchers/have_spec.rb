@@ -384,6 +384,24 @@ EOF
     end
   end
 
+  describe "expectations compounded with RSpec::Matchers::Composable#and" do
+    it "fails with first error" do
+      expect {
+        expect([1, 2, 3]).to have(4).items.and have(3).items
+      }.to raise_error
+    end
+
+    it "fails with second error" do
+      expect {
+        expect([1, 2, 3]).to have(3).items.and have(4).items
+      }.to raise_error
+    end
+
+    it "passes" do
+      expect([1, 2, 3]).to have(3).items.and have(3).items
+    end
+  end
+
   describe RSpec::CollectionMatchers::Have, "for a collection owner that implements #send" do
     before(:each) do
       @collection = Object.new
