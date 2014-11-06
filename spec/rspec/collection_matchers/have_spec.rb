@@ -384,21 +384,49 @@ EOF
     end
   end
 
-  describe "expectations compounded with RSpec::Matchers::Composable#and" do
-    it "fails with first error" do
-      expect {
-        expect([1, 2, 3]).to be_falsey.and have(3).items
-      }.to raise_error
+  describe "expectations compounded with RSpec::Matchers::Composable", :if => defined?(RSpec::Matchers::Composable) do
+    context "using #and" do
+      it "fails with relevant error when only first expectation fails" do
+        expect {
+          expect([1, 2, 3]).to be_falsey.and have(3).items
+        }.to fail_matching "expected: falsey value"
+      end
+
+      it "fails with relevant error when only second expectation fails" do
+        expect {
+          expect([1, 2, 3]).to have(3).items.and be_falsey
+        }.to fail_matching "expected: falsey value"
+      end
+
+      it "fails with relevant error when both expectations fail" do
+        expect {
+          expect([1, 2, 3]).to be_falsey.and have(0).items
+        }.to fail_matching "...and:"
+      end
+
+      it "passes when both expectations are met" do
+        expect([1, 2, 3]).to have(3).items.and be_truthy
+      end
     end
 
-    it "fails with second error" do
-      expect {
-        expect([1, 2, 3]).to have(3).items.and be_falsey
-      }.to raise_error
-    end
+    context "using #or" do
+      it "fails with relevant error when neither expectation is met" do
+        expect {
+          expect([1, 2, 3]).to be_falsey.or have(0).items
+        }.to fail_matching "...or:"
+      end
 
-    it "passes" do
-      expect([1, 2, 3]).to have(3).items.and be_truthy
+      it "passes when only first expectation is met" do
+        expect([1, 2, 3]).to have(3).items.or be_falsey
+      end
+
+      it "passes when only second expectation is met" do
+        expect([1, 2, 3]).to be_falsey.or have(3).items
+      end
+
+      it "passes when both expectations are met" do
+        expect([1, 2, 3]).to be_truthy.or have(3).items
+      end
     end
   end
 
