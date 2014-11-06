@@ -1,3 +1,11 @@
+### Development
+
+[full changelog](http://github.com/rspec/rspec-collection_matchers/compare/v1.0.0...master)
+
+Enhancements:
+
+* Make matchers composable on RSpec 3 and above. (Johnson Denen, #19)
+
 ### 1.0.0 / 2014-06-09
 
 [full changelog](http://github.com/rspec/rspec-collection_matchers/compare/v0.0.4...v1.0.0)
