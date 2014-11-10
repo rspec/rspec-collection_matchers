@@ -1,6 +1,16 @@
 ### Development
 
-[full changelog](http://github.com/rspec/rspec-collection_matchers/compare/v1.0.0...master)
+### 1.1.1 / 2014-11-10
+
+[full changelog](http://github.com/rspec/rspec-collection_matchers/compare/v1.1.0...v1.1.1)
+
+Bug Fixes:
+
+* Remove virtual dependency on rspec-core (Thanks @jscheid for reporting that, #20)
+
+### 1.1.0 / 2014-11-10
+
+[full changelog](http://github.com/rspec/rspec-collection_matchers/compare/v1.0.0...v1.1.0)
 
 Enhancements:
 
