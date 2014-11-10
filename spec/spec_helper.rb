@@ -9,7 +9,7 @@ require 'rspec/collection_matchers'
 Dir['./spec/support/**/*'].each {|f| require f}
 
 RSpec.configure do |config|
-  config.treat_symbols_as_metadata_keys_with_true_values = true if RSpec::Core::Version::STRING < "3.0"
+  config.treat_symbols_as_metadata_keys_with_true_values = true if RSpec::Expectations::Version::STRING < "3.0"
   config.run_all_when_everything_filtered = true
   config.filter_run :focus
 

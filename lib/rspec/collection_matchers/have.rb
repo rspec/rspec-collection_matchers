@@ -1,7 +1,7 @@
 module RSpec
   module CollectionMatchers
     class Have
-      include RSpec::Matchers::Composable unless RSpec::Core::Version::STRING.to_f < 3.0
+      include RSpec::Matchers::Composable unless RSpec::Expectations::Version::STRING.to_f < 3.0
 
       QUERY_METHODS = [:size, :length, :count].freeze
       IGNORED_CLASSES = [Integer].freeze
