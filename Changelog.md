@@ -1,5 +1,13 @@
 ### Development
 
+### 1.1.2 / 2014-11-11
+
+[full changelog](http://github.com/rspec/rspec-collection_matchers/compare/v1.1.1...v1.1.2)
+
+Bug Fixes:
+
+* Fix bug of uninitialized constant RSpec::Expectations (Related to #20)
+
 ### 1.1.1 / 2014-11-10
 
 [full changelog](http://github.com/rspec/rspec-collection_matchers/compare/v1.1.0...v1.1.1)
