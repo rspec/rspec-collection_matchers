@@ -66,7 +66,7 @@ Feature: have(n).items matcher
       end
       """
      When I run `rspec have_items_spec.rb`
-     Then the output should contain "16 examples, 8 failures"
+     Then the output should contain "20 examples, 10 failures"
       And the output should contain "expected target not to have 3 items, got 3"
       And the output should contain "expected 2 items, got 3"
       And the output should contain "expected 4 items, got 3"
@@ -116,7 +116,7 @@ Feature: have(n).items matcher
       end
       """
      When I run `rspec have_words_spec.rb`
-     Then the output should contain "16 examples, 8 failures"
+     Then the output should contain "20 examples, 10 failures"
       And the output should contain "expected target not to have 5 words, got 5"
       And the output should contain "expected 4 words, got 5"
       And the output should contain "expected 6 words, got 5"
