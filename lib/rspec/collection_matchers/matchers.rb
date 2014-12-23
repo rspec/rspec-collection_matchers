@@ -70,5 +70,17 @@ module RSpec
     def have_more_than(n)
       RSpec::CollectionMatchers::Have.new(n, :more_than)
     end   
+
+    # Exactly like have() with <.
+    #
+    # @example
+    #   expect("this").to have_less_than(3).letters
+    #
+    # ### Warning:
+    #
+    # `expect(..).not_to have_less_than` is not supported
+    def have_less_than(n)
+      RSpec::CollectionMatchers::Have.new(n, :less_than)
+    end 
   end
 end

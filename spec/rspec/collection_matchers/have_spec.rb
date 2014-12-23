@@ -356,7 +356,7 @@ EOF
       }.to fail_with("expected more than 3 items_in_collection_with_count_method, got 3")
     end
 
-    it "fails if target has a collection of items with > n members" do
+    it "fails if target has a collection of items with < n members" do
       owner = create_collection_owner_with(3)
       expect {
         expect(owner).to have_more_than(4).items_in_collection_with_length_method
@@ -367,6 +367,41 @@ EOF
       expect {
         expect(owner).to have_more_than(4).items_in_collection_with_count_method
       }.to fail_with("expected more than 4 items_in_collection_with_count_method, got 3")
+    end
+  end
+
+  describe "expect(...).to have_less_than(n).items" do
+    it "passes if target has a collection of items with < n members" do
+      owner = create_collection_owner_with(3)
+      expect(owner).to have_less_than(4).items_in_collection_with_length_method
+      expect(owner).to have_less_than(4).items_in_collection_with_size_method
+      expect(owner).to have_less_than(4).items_in_collection_with_count_method
+    end
+
+    it "fails if target has a collection of items with n members" do
+      owner = create_collection_owner_with(3)
+      expect {
+        expect(owner).to have_less_than(3).items_in_collection_with_length_method
+      }.to fail_with("expected less than 3 items_in_collection_with_length_method, got 3")
+      expect {
+        expect(owner).to have_less_than(3).items_in_collection_with_size_method
+      }.to fail_with("expected less than 3 items_in_collection_with_size_method, got 3")
+      expect {
+        expect(owner).to have_less_than(3).items_in_collection_with_count_method
+      }.to fail_with("expected less than 3 items_in_collection_with_count_method, got 3")
+    end
+
+    it "fails if target has a collection of items with > n members" do
+      owner = create_collection_owner_with(3)
+      expect {
+        expect(owner).to have_less_than(2).items_in_collection_with_length_method
+      }.to fail_with("expected less than 2 items_in_collection_with_length_method, got 3")
+      expect {
+        expect(owner).to have_less_than(2).items_in_collection_with_size_method
+      }.to fail_with("expected less than 2 items_in_collection_with_size_method, got 3")
+      expect {
+        expect(owner).to have_less_than(2).items_in_collection_with_count_method
+      }.to fail_with("expected less than 2 items_in_collection_with_count_method, got 3")
     end
   end
 

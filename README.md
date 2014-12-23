@@ -65,6 +65,7 @@ expect(collection).to have_exactly(n).items
 expect(collection).to have_at_most(n).items
 expect(collection).to have_at_least(n).items
 expect(collection).to have_more_than(n).items
+expect(collection).to have_less_than(n).items
 ```
 
 ## See also
