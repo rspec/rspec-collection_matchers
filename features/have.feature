@@ -7,6 +7,7 @@ Feature: have(n).items matcher
     collection.should have(x).items
     collection.should have_at_least(x).items
     collection.should have_at_most(x).items
+    collection.should have_more_than(x).items
     ```
 
   In addition, #have_exactly is provided as an alias to #have.
@@ -43,6 +44,7 @@ Feature: have(n).items matcher
         it { should_not have_exactly(2).items }
         it { should_not have_exactly(4).items }
 
+        it { should have_more_than(2).items }
         it { should have_at_least(2).items }
         it { should have_at_most(4).items }
 
@@ -56,6 +58,7 @@ Feature: have(n).items matcher
         it { should have_exactly(4).items }
 
         it { should have_at_least(4).items }
+        it { should have_more_than(3).items }
         it { should have_at_most(2).items }
       end
       """
@@ -65,6 +68,7 @@ Feature: have(n).items matcher
       And the output should contain "expected 2 items, got 3"
       And the output should contain "expected 4 items, got 3"
       And the output should contain "expected at least 4 items, got 3"
+      And the output should contain "expected more than 3 items, got 3"
       And the output should contain "expected at most 2 items, got 3"
 
   Scenario: have(x).words on a String when String#words is defined
@@ -86,7 +90,8 @@ Feature: have(n).items matcher
         it { should have_exactly(5).words }
         it { should_not have_exactly(4).words }
         it { should_not have_exactly(6).words }
-
+      
+        it { should have_more_than(4).words }
         it { should have_at_least(4).words }
         it { should have_at_most(6).words }
 
@@ -100,6 +105,7 @@ Feature: have(n).items matcher
         it { should have_exactly(6).words }
 
         it { should have_at_least(6).words }
+        it { should have_more_than(5).words }
         it { should have_at_most(4).words }
       end
       """
@@ -109,5 +115,6 @@ Feature: have(n).items matcher
       And the output should contain "expected 4 words, got 5"
       And the output should contain "expected 6 words, got 5"
       And the output should contain "expected at least 6 words, got 5"
+      And the output should contain "expected more than 5 words, got 5"
       And the output should contain "expected at most 4 words, got 5"
 

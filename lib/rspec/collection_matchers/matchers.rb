@@ -58,5 +58,17 @@ module RSpec
     def have_at_most(n)
       RSpec::CollectionMatchers::Have.new(n, :at_most)
     end
+
+    # Exactly like have() with >.
+    #
+    # @example
+    #   expect("this").to have_more_than(3).letters
+    #
+    # ### Warning:
+    #
+    # `expect(..).not_to have_more_than` is not supported
+    def have_more_than(n)
+      RSpec::CollectionMatchers::Have.new(n, :more_than)
+    end   
   end
 end

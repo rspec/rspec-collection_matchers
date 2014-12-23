@@ -20,7 +20,8 @@ module RSpec
         @relativities ||= {
           :exactly => "",
           :at_least => "at least ",
-          :at_most => "at most "
+          :at_most => "at most ",
+          :more_than => "more than "
         }
       end
 
@@ -42,6 +43,7 @@ module RSpec
         case @relativity
         when :at_least then @actual >= @expected
         when :at_most  then @actual <= @expected
+        when :more_than then @actual > @expected
         else                @actual == @expected
         end
       end
