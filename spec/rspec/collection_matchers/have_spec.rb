@@ -428,6 +428,21 @@ EOF
         expect([1, 2, 3]).to be_truthy.or have(3).items
       end
     end
+
+    context "using the have matcher as an argument of another matcher" do
+      it "has an alias for the have matcher" do
+        word = "hi"
+
+        expect {
+          word = "hey"
+        }.to change { word }.
+          from( a_collection_having(2).letters ).
+          to( a_collection_having(3).letters )
+      end
+
+      it "has an alias for the have_at_most matcher"
+      it "has an alias for the have_at_least matcher"
+    end
   end
 
   describe RSpec::CollectionMatchers::Have, "for a collection owner that implements #send" do
