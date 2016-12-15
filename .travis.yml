@@ -2,8 +2,8 @@ language: ruby
 script: "script/test_all"
 bundler_args: "--standalone --binstubs --without documentation"
 rvm:
-  - 2.3
-  - 2.2
+  - 2.3.3
+  - 2.2.5
   - 2.1
   - 2.0.0
   - 1.9.3
