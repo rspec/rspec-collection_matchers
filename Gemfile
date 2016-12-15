@@ -39,6 +39,9 @@ end
 gem "activesupport", *rails_gem_args
 gem "activemodel",   *rails_gem_args
 
+if RUBY_VERSION.to_f < 2
+  gem 'json', '< 2'
+end
 
 platform :rbx do
   gem 'rubysl'
