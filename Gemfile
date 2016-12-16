@@ -15,8 +15,9 @@ end
 # only the master branch is supported on rspec-support
 gem "rspec-support", :git => "git://github.com/rspec/rspec-support.git"
 
-gem "cucumber", "~> 1.1.9"
 gem "aruba",    "~> 0.5"
+gem "cucumber", "~> 1.1.9"
+gem "i18n",     "~> 0.6.11" if RUBY_VERSION < '1.9.3'
 gem "rake",     "~> 10.0.0"
 
 version_file = File.expand_path("../.rails-version", __FILE__)
@@ -38,7 +39,6 @@ end
 
 gem "activesupport", *rails_gem_args
 gem "activemodel",   *rails_gem_args
-
 
 platform :rbx do
   gem 'rubysl'
