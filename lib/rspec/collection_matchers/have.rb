@@ -24,6 +24,12 @@ module RSpec
         }
       end
 
+      if RUBY_VERSION == '1.9.2'
+        def to_ary
+          [self]
+        end
+      end
+
       def matches?(collection_or_owner)
         collection = determine_collection(collection_or_owner)
         case collection
