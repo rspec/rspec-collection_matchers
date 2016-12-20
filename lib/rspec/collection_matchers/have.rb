@@ -24,6 +24,17 @@ module RSpec
         }
       end
 
+      if RUBY_VERSION == '1.9.2'
+        # On Ruby 1.9.2 items that don't return an array for `to_ary`
+        # can't be flattened in arrays, we need to be able to do this
+        # to produce diffs for compound matchers, so this corrects the
+        # default implementation. Note that rspec-support has code that
+        # directly checks for pattern and prevents infinite recursion.
+        def to_ary
+          [self]
+        end
+      end
+
       def matches?(collection_or_owner)
         collection = determine_collection(collection_or_owner)
         case collection

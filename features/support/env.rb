@@ -1,3 +1,18 @@
+unless defined?(RSpec::Matchers.all)
+  module RSpec
+    module Matchers
+      # aruba assumes this is defined
+      def all
+      end
+
+      # aruba doesn't alias this itself on 2.99
+      def an_output_string_including(partial)
+        match partial
+      end
+    end
+  end
+end
+
 require 'aruba/cucumber'
 
 Before do
