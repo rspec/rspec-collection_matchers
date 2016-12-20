@@ -1,5 +1,10 @@
 ### Development
 
+Bug Fixes:
+
+* Define `to_ary` on Ruby 1.9.2 to fix issue when diffing in compound expectations
+  (Jon Rowe, #34)
+
 ### 1.1.2 / 2014-11-11
 
 [full changelog](http://github.com/rspec/rspec-collection_matchers/compare/v1.1.1...v1.1.2)
