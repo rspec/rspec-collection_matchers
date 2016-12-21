@@ -116,8 +116,8 @@ EOF
         "have #{relative_expectation} #{@collection_name}"
       end
 
-      def respond_to?(m)
-        @expected.respond_to?(m) || super
+      def respond_to?(m, include_all = false)
+        @expected.respond_to?(m, include_all) || super
       end
 
       private
