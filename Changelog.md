@@ -4,6 +4,8 @@ Bug Fixes:
 
 * Define `to_ary` on Ruby 1.9.2 to fix issue when diffing in compound expectations
   (Jon Rowe, #34)
+* Prevent warning being issued due to incorrect definition of `respond_to`.
+  (Matt Whipple, #33)
 
 ### 1.1.2 / 2014-11-11
 
