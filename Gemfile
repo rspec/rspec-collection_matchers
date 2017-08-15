@@ -39,7 +39,7 @@ gem "activesupport", *rails_gem_args
 gem "activemodel",   *rails_gem_args
 
 if RUBY_VERSION.to_f < 2
-  gem "cucumber", "< 2"
+  gem "cucumber", "~> 1.3.20"
   gem 'json', '< 2'
   gem 'term-ansicolor',  '< 1.4.0' # used by cucumber
   gem 'tins', '~> 1.6.0' # used by term-ansicolor
