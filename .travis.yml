@@ -20,19 +20,19 @@ env:
   - BRANCH=2-99-maintenance
 matrix:
   include:
-    - rvm: jruby-1.7
+    - rvm: jruby-1.7.27
       env:
         - JRUBY_OPTS='--dev'
         - BRANCH=master
-    - rvm: jruby-1.7
+    - rvm: jruby-1.7.27
       env:
         - JRUBY_OPTS='--dev'
         - BRANCH=2-99-maintenance
-    - rvm: jruby-1.7
+    - rvm: jruby-1.7.27
       env:
         - JRUBY_OPTS='--dev --1.8'
         - BRANCH=master
-    - rvm: jruby-1.7
+    - rvm: jruby-1.7.27
       env:
         - JRUBY_OPTS='--dev --1.8'
         - BRANCH=2-99-maintenance
