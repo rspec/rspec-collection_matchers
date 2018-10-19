@@ -13,6 +13,14 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/rspec/rspec-collection_matchers"
   spec.license       = "MIT"
 
+  spec.metadata = {
+    'bug_tracker_uri'   => 'https://github.com/rspec/rspec-collection_matchers/issues',
+    'changelog_uri'     => "https://github.com/rspec/rspec-collection_matchers/blob/v#{spec.version}/Changelog.md",
+    'documentation_uri' => 'https://rspec.info/documentation/',
+    'mailing_list_uri'  => 'https://groups.google.com/forum/#!forum/rspec',
+    'source_code_uri'   => 'https://github.com/rspec/rspec-collection_matchers',
+  }
+
   spec.files         = `git ls-files`.split($/)
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(spec|features)/})
