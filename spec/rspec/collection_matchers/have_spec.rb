@@ -523,21 +523,21 @@ EOF
     describe "the have matcher" do
       it "generates its own description" do
         expect(team).to have(3).players
-        expect(RSpec::Matchers.generated_description).to eq "should have 3 players"
+        expect(RSpec::Matchers.generated_description).to match /have 3 players$/
       end
     end
 
     describe "the have_at_least matcher"do
       it "generates its own description" do
         expect(team).to have_at_least(2).players
-        expect(RSpec::Matchers.generated_description).to eq "should have at least 2 players"
+        expect(RSpec::Matchers.generated_description).to match /have at least 2 players$/
       end
     end
 
     describe "the have_at_most matcher" do
       it "generates its own description" do
         expect(team).to have_at_most(4).players
-        expect(RSpec::Matchers.generated_description).to eq "should have at most 4 players"
+        expect(RSpec::Matchers.generated_description).to match /have at most 4 players$/
       end
     end
   end
