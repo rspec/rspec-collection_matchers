@@ -3,7 +3,9 @@
 RSpec::CollectionMatchers lets you express expected outcomes on collections
 of an object in an example.
 
-    expect(account.shopping_cart).to have_exactly(3).items
+```ruby
+expect(account.shopping_cart).to have_exactly(3).items
+```
 
 ## Install
 
