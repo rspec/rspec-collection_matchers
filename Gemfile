@@ -38,12 +38,15 @@ end
 gem "activesupport", *rails_gem_args
 gem "activemodel",   *rails_gem_args
 
-if RUBY_VERSION.to_f < 2
+if RUBY_VERSION < '1.9'
+  gem 'ffi', '< 1.9.19' # ffi dropped Ruby 1.8 support in 1.9.19
+elsif RUBY_VERSION.to_f < 2
   gem "cucumber", "~> 1.3.20"
   gem "contracts", "0.15.0" # doesn't work on Ruby 1.9.3
   gem 'json', '< 2'
   gem 'term-ansicolor',  '< 1.4.0' # used by cucumber
   gem 'tins', '~> 1.6.0' # used by term-ansicolor
+  gem 'ffi', '< 1.11.0' # ffi dropped Ruby 1.9 support in 1.11.0
 else
   gem "cucumber"
 end
