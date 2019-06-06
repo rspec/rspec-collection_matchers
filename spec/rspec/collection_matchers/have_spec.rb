@@ -428,6 +428,58 @@ EOF
         expect([1, 2, 3]).to be_truthy.or have(3).items
       end
     end
+
+    describe "for a collection owner that implements #send" do
+      before(:each) do
+        @collection = Object.new
+        def @collection.floozles; [1,2,3] end
+        def @collection.send; :sent; end
+      end
+
+      context "using #and" do
+        it "fails with relevant error when only first expectation fails" do
+          expect {
+            expect(@collection).to be_falsey.and have(3).floozles
+          }.to fail_matching "expected: falsey value"
+        end
+
+        it "fails with relevant error when only second expectation fails" do
+          expect {
+            expect(@collection).to have(3).floozles.and be_falsey
+          }.to fail_matching "expected: falsey value"
+        end
+
+        it "fails with relevant error when both expectations fail" do
+          expect {
+            expect(@collection).to be_falsey.and have(0).floozles
+          }.to fail_matching "...and:"
+        end
+
+        it "passes when both expectations are met" do
+          expect(@collection).to have(3).floozles.and be_truthy
+        end
+      end
+
+      context "using #or" do
+        it "fails with relevant error when neither expectation is met" do
+          expect {
+            expect([1, 2, 3]).to be_falsey.or have(0).floozles
+          }.to fail_with(/expected: falsey.*or.*0 floozles/m)
+        end
+
+        it "passes when only first expectation is met" do
+          expect([1, 2, 3]).to have(3).floozles.or be_falsey
+        end
+
+        it "passes when only second expectation is met" do
+          expect([1, 2, 3]).to be_falsey.or have(3).floozles
+        end
+
+        it "passes when both expectations are met" do
+          expect([1, 2, 3]).to be_truthy.or have(3).floozles
+        end
+      end
+    end
   end
 
   describe RSpec::CollectionMatchers::Have, "for a collection owner that implements #send" do
