@@ -5,6 +5,9 @@ before_install:
   - gem update --system --conservative || (gem i "rubygems-update:~>2.7" --no-document && update_rubygems)
   - gem update bundler --conservative
 
+# In order to install old Rubies, we need to use old Ubuntu distibution.
+dist: trusty
+
 rvm:
   - 1.8.7
   - 1.9.2
