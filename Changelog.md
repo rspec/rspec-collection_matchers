@@ -2,7 +2,7 @@
 
 Enhancements:
 
-* Add an `have` matcher alias `a_collection_having` (Hugo Baraúna, #25)
+* Add a `have` matcher alias for `a_collection_having` (Hugo Baraúna, #25)
 
 Bug Fixes:
 
