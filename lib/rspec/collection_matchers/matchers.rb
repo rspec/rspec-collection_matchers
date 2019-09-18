@@ -34,6 +34,7 @@ module RSpec
       RSpec::CollectionMatchers::Have.new(n)
     end
     alias :have_exactly :have
+    alias :a_collection_having :have
 
     # Exactly like have() with >=.
     #
