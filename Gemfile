@@ -16,7 +16,16 @@ end
 gem "rspec-support", :git => "git://github.com/rspec/rspec-support.git"
 
 gem "aruba"
-gem "rake",     "~> 10.0.0"
+
+if RUBY_VERSION < '1.9.3'
+  gem "rake", "~> 10.0.0" # rake 11 requires Ruby 1.9.3 or later
+elsif RUBY_VERSION < '2.0.0'
+  gem "rake", "~> 11.0.0" # rake 12 requires Ruby 2.0.0 or later
+elsif RUBY_VERSION < '2.2.0'
+  gem "rake", "~> 12.3.2" # rake 13 requires Ruby 2.2.0 or later
+else
+  gem "rake", "~> 13.0.0"
+end
 
 version_file = File.expand_path("../.rails-version", __FILE__)
 rails_gem_args = case version = ENV['RAILS_VERSION'] || (File.exist?(version_file) && File.read(version_file).chomp)
