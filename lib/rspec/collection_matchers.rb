@@ -1,3 +1,5 @@
+warn "This branch is deprecated. Please use `main`."
+
 require 'rspec/expectations'
 require 'rspec/collection_matchers/version'
 require 'rspec/collection_matchers/matchers'
