@@ -8,11 +8,11 @@ gemspec
     gem lib, :path => library_path
   else
     gem lib, :git    => "git://github.com/rspec/#{lib}.git",
-             :branch => ENV.fetch('BRANCH',"master")
+             :branch => ENV.fetch('BRANCH',"main")
   end
 end
 
-# only the master branch is supported on rspec-support
+# only the main branch is supported on rspec-support
 gem "rspec-support", :git => "git://github.com/rspec/rspec-support.git"
 
 gem "aruba"
@@ -29,7 +29,7 @@ end
 
 version_file = File.expand_path("../.rails-version", __FILE__)
 rails_gem_args = case version = ENV['RAILS_VERSION'] || (File.exist?(version_file) && File.read(version_file).chomp)
-when /master/
+when /main/
  { :git => "git://github.com/rails/rails.git" }
 when /stable$/
  { :git => "git://github.com/rails/rails.git", :branch => version }
