@@ -55,6 +55,7 @@ if RUBY_VERSION.to_f < 2
   gem 'tins', '~> 1.6.0' # used by term-ansicolor
 else
   gem "cucumber"
+  gem "json", "> 2.3.0"
 end
 
 if RUBY_VERSION < '1.9.3'
