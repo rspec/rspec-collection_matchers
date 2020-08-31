@@ -62,8 +62,4 @@ if RUBY_VERSION < '1.9.3'
   gem 'i18n', '< 0.7.0'
 end
 
-platform :rbx do
-  gem 'rubysl'
-end
-
 eval File.read('Gemfile-custom') if File.exist?('Gemfile-custom')
