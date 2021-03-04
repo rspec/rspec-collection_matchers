@@ -116,6 +116,10 @@ EOF
         "have #{relative_expectation} #{@collection_name}"
       end
 
+      def supports_value_expectations?
+        true
+      end
+
       def respond_to?(m, include_all = false)
         @expected.respond_to?(m, include_all) || super
       end
