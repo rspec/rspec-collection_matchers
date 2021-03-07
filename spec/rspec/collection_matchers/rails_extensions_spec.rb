@@ -2,7 +2,7 @@ require "spec_helper"
 require 'active_model'
 
 module RSpec::CollectionMatchers
-  describe "Have extensions for rails" do
+  RSpec.describe "Have extensions for rails" do
     describe "error_on" do
       it "provides a description including the name of what the error is on" do
         expect(have(1).error_on(:whatever).description).to eq "have 1 error on :whatever"

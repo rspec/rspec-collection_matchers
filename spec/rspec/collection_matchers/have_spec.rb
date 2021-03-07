@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'stringio'
 
-describe "have matcher" do
+RSpec.describe "have matcher" do
   let(:inflector) do
     Class.new do
       def self.pluralize(string)
@@ -560,14 +560,12 @@ end
 
 module RSpec
   module CollectionMatchers
-    describe Syntax do
+    RSpec.describe Syntax do
       describe "expression generation" do
         let(:target) { "foo" }
         let(:expectation) { "eq('bar')" }
         let(:positive_expect_example) { "expect(foo).to eq('bar')" }
-        let(:positive_should_example) { "foo.should eq('bar')" }
         let(:negative_expect_example) { "expect(foo).not_to eq('bar')" }
-        let(:negative_should_example) { "foo.should_not eq('bar')" }
 
         def positive_expression
           Syntax.positive_expression(target, expectation)
@@ -577,52 +575,14 @@ module RSpec
           Syntax.negative_expression(target, expectation)
         end
 
-        context "when only :expect is enabled", :uses_only_expect do
-          before do
-            expect(Expectations::Syntax.should_enabled?).to be_falsey
-            expect(Expectations::Syntax.expect_enabled?).to be_truthy
-          end
-
-          it 'generates a positive expression using the expect syntax' do
-            expect(positive_expression).to eq(positive_expect_example)
-          end
-
-          it 'generates a negative expression using the expect syntax' do
-            expect(negative_expression).to eq(negative_expect_example)
-          end
+        it 'generates a positive expression using the expect syntax' do
+          expect(positive_expression).to eq(positive_expect_example)
         end
 
-        context "when both :should and :expect are enabled", :uses_should do
-          before do
-            expect(Expectations::Syntax.should_enabled?).to be_truthy
-            expect(Expectations::Syntax.expect_enabled?).to be_truthy
-          end
-
-          it 'generates a positive expression using the expect syntax' do
-            expect(positive_expression).to eq(positive_expect_example)
-          end
-
-          it 'generates a negative expression using the expect syntax' do
-            expect(negative_expression).to eq(negative_expect_example)
-          end
-        end
-
-        context "when only :should is enabled", :uses_only_should do
-          before do
-            Expectations::Syntax.should_enabled?.should be_truthy
-            Expectations::Syntax.expect_enabled?.should be_falsey
-          end
-
-          it 'generates a positive expression using the expect syntax' do
-            positive_expression.should eq(positive_should_example)
-          end
-
-          it 'generates a negative expression using the expect syntax' do
-            negative_expression.should eq(negative_should_example)
-          end
+        it 'generates a negative expression using the expect syntax' do
+          expect(negative_expression).to eq(negative_expect_example)
         end
       end
-
     end
   end
 end

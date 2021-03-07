@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gemspec
 
-%w[rspec rspec-core rspec-expectations rspec-mocks].each do |lib|
+%w[rspec rspec-support rspec-core rspec-expectations rspec-mocks].each do |lib|
   library_path = File.expand_path("../../#{lib}", __FILE__)
   if File.exist?(library_path) && !ENV['USE_GIT_REPOS']
     gem lib, :path => library_path
@@ -11,9 +11,6 @@ gemspec
              :branch => ENV.fetch('BRANCH',"main")
   end
 end
-
-# only the main branch is supported on rspec-support
-gem "rspec-support", :git => "git://github.com/rspec/rspec-support.git"
 
 gem "aruba"
 
