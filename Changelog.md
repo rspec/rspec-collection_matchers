@@ -1,3 +1,10 @@
+### 1.2.1 / 2023-09-28
+
+Bug Fixes:
+
+* Support modern RSpec by defining #supports_value_expectations? on matcher.
+  (Jon Rowe, #52)
+
 ### 1.2.0 / 2019-09-18
 
 Enhancements:
