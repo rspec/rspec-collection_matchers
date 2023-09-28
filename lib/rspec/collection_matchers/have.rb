@@ -24,6 +24,10 @@ module RSpec
         }
       end
 
+      def supports_value_expectations?
+        true
+      end
+
       if RUBY_VERSION == '1.9.2'
         # On Ruby 1.9.2 items that don't return an array for `to_ary`
         # can't be flattened in arrays, we need to be able to do this
