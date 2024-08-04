@@ -21,7 +21,8 @@ Gem::Specification.new do |spec|
     'source_code_uri'   => 'https://github.com/rspec/rspec-collection_matchers',
   }
 
-  spec.files         = `git ls-files`.split($/)
+  spec.files         = `git ls-files -- lib/*`.split("\n")
+  spec.files         += %w[README.md LICENSE.txt Changelog.md]
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(spec|features)/})
   spec.require_paths = ["lib"]
