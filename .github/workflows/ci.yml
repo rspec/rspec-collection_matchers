@@ -18,7 +18,7 @@ concurrency:
 jobs:
   test:
     name: 'Ruby: ${{ matrix.ruby }}, Rails: ${{ matrix.env.RAILS_VERSION }}'
-    runs-on: ubuntu-20.04
+    runs-on: 'ubuntu-latest'
     strategy:
       fail-fast: false
       matrix:
@@ -42,7 +42,7 @@ jobs:
 
   legacy:
     name: Legacy Ruby Builds (${{ matrix.container.version }})
-    runs-on: ubuntu-20.04
+    runs-on: 'ubuntu-latest'
     container:
       image: ${{ matrix.container.tag }}
       options: ${{ matrix.container.options || '--add-host github-complains-if-this-is-empty.com:127.0.0.1' }}
@@ -63,7 +63,11 @@ jobs:
     env:
       LEGACY_CI: true
     steps:
-      - uses: actions/checkout@v3
+      - run: git config --global --add safe.directory $GITHUB_WORKSPACE
+      - run: git init $GITHUB_WORKSPACE
+      - run: git remote add origin https://github.com/rspec/rspec-collection_matchers
+      - run: git config --local gc.auto 0
+      - run: git fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +$GITHUB_SHA:$GITHUB_REF
+      - run: git checkout --progress --force $GITHUB_REF
       - run: script/legacy_setup.sh
-      - run: ${{ matrix.container.post }}
       - run: script/run_build
