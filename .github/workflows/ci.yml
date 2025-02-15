@@ -18,7 +18,7 @@ concurrency:
 jobs:
   test:
     name: 'Ruby: ${{ matrix.ruby }}, Rails: ${{ matrix.env.RAILS_VERSION }}'
-    runs-on: ubuntu-20.04
+    runs-on: 'ubuntu-latest'
     strategy:
       fail-fast: false
       matrix:
@@ -42,7 +42,7 @@ jobs:
 
   legacy:
     name: Legacy Ruby Builds (${{ matrix.container.version }})
-    runs-on: ubuntu-20.04
+    runs-on: 'ubuntu-latest'
     container:
       image: ${{ matrix.container.tag }}
       options: ${{ matrix.container.options || '--add-host github-complains-if-this-is-empty.com:127.0.0.1' }}
