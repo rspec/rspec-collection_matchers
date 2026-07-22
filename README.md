@@ -1,4 +1,4 @@
-# RSpec::CollectionMatchers [![Build Status](https://secure.travis-ci.org/rspec/rspec-collection_matchers.svg?branch=main)](http://travis-ci.org/rspec/rspec-collection_matchers)
+# RSpec::CollectionMatchers [![Build Status](https://github.com/rspec/rspec-collection_matchers/actions/workflows/ci.yml/badge.svg)](https://github.com/rspec/rspec-collection_matchers/actions/workflows/ci.yml)
 
 RSpec::CollectionMatchers lets you express expected outcomes on collections
 of an object in an example.
