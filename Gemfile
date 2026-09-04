@@ -7,8 +7,11 @@ gemspec
 
   if File.exist?(library_path) && !ENV['USE_GIT_REPOS']
     gem lib, :path => library_path
-  else
+  elsif RUBY_VERSION.to_f > 2.2
     gem lib, git: "https://github.com/rspec/rspec", glob: "#{lib}/#{lib}.gemspec", branch: "3-13-maintenance"
+  else
+    # Older ruby doesn't seem to support monorepos?
+    gem lib, git: "https://github.com/rspec/#{lib == 'rspec' ? 'rspec-metagem' : lib}"
   end
 end
 
